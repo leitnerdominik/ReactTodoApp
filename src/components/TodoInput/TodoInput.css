@@ -1,0 +1,16 @@
+.TodoInput input {
+  width: 30%;
+  margin: 20px auto;
+  display: block;
+  padding: 16px;
+  font-size: 24px;
+  -webkit-box-shadow: 3px 2px 10px 0px rgba(122,122,122,1);
+  -moz-box-shadow: 3px 2px 10px 0px rgba(122,122,122,1);
+  box-shadow: 3px 2px 10px 0px rgba(122,122,122,1);
+  border: none;
+  box-sizing: border-box;
+}
+
+.TodoInput input:focus {
+  outline: none;
+}

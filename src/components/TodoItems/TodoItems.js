@@ -8,7 +8,6 @@ const todoItems = (props) => (
   <div>
     <ul className={classes.ListUl}>
       {props.items.map((item, index) => {
-        console.log(index);
         return <TodoItem 
                   key={index}
                   val={item.value}

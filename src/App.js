@@ -52,7 +52,6 @@ class App extends Component {
     const item = items[index];
     item.completed = !item.completed;
     items[index] = item;
-    console.log(item.completed);
     this.setState({items});
   }
 

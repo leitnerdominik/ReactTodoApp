@@ -8,14 +8,17 @@ import classes from './TodoItem.css'
 const todoItem = (props) => {  
   console.log(props);
   return (
+    <div className={classes.Container}>
       <label 
-          className={props.completed ? [classes.Container, classes.Completed].join(" ") : classes.Container}
-          htmlFor="chkbx"
+          className={props.completed ? classes.Completed : null}
+          htmlFor={"chkbx" + props.val}
           onClick={props.markCompleted}
           >{props.val}
-          <input type="checkbox" id="chkbx" />
-        <span className={classes.Checkmark}></span>
       </label>
+      <input type="checkbox" id={"chkbx" + props.val} />
+      <span className={classes.Checkmark}></span>
+      </div>
+      
     // <li className={classes.Container}>
     //   <input type="checkbox" className={classes.Hiddenchkbx} id={props.key}/>
     //   <label className={props.completed ? [classes.ChkLabel, classes.Done].join(" ") : classes.chklbl}

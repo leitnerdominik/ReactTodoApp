@@ -11,12 +11,15 @@ const todoItem = (props) => {
     <div className={classes.Container}>
       <label 
           className={props.completed ? classes.Completed : null}
-          htmlFor={"chkbx" + props.val}
-          onClick={props.markCompleted}
+          
+          
           >{props.val}
       </label>
+      <span className={classes.Checkmark}
+      onClick={props.markCompleted}
+      htmlFor={"chkbx" + props.val}></span>
       <input type="checkbox" id={"chkbx" + props.val} />
-      <span className={classes.Checkmark}></span>
+ 
       </div>
       
     // <li className={classes.Container}>

@@ -1,73 +1,38 @@
- /* Customize the label (the container) */
- .Container {
-  width: 30%;
-  display: block;
-  position: relative;
-  padding: 16px 30px;
-  margin: 20px auto;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  border-bottom: 0.5px solid black;
+.Container {
+  width: 50%;
+  margin: auto;
+  padding: 0;
   box-sizing: border-box;
+  list-style: none;
+  padding: 20px 0;
+  cursor: pointer;
+  position: relative;
+  font-size: 24px;
+  background-color: antiquewhite;
+}
+
+li.Completed::before {
+  content: '✔';
+  position: absolute;
+  left: -20px;
 }
 
 .Completed {
   text-decoration: line-through;
 }
 
-/* Hide the browser's default checkbox */
-.Container input {
+.Close {
   position: absolute;
-  opacity: 0;
-  cursor: pointer;
+  right: 0;
+  top: 0;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 22px 12px 0 0;
+  margin: 0 10px;
+  height: 100%;
 }
 
-/* Create a custom checkbox */
-.Checkmark {
-  position: absolute;
-  /* top: 0; */
-  left: 0;
-  margin: auto 0;
-  height: 25px;
-  width: 25px;
-  background-color: #eee;
+.Close:hover {
+  background-color: red;
+  color: white;
 }
-
-/* On mouse-over, add a grey background color */
-.Container:hover input ~ .Checkmark {
-  background-color: #ccc;
-}
-
-/* When the checkbox is checked, add a blue background */
-.Container input:checked ~ .Checkmark {
-  background-color: #0cbb09;
-}
-
-/* Create the checkmark/indicator (hidden when not checked) */
-.Checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-/* Show the checkmark when checked */
-.Container input:checked ~ .Checkmark:after {
-  display: block;
-}
-
-/* Style the checkmark/indicator */
-.Container .Checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-} 

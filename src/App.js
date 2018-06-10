@@ -41,13 +41,14 @@ class App extends Component {
   }
 
   removeTodoItem = (index) => {
-    const items = [...this.state.items];
-    items.splice(index, 1);
+    // const items = this.state.items.slice();
+    // console.log(items[index].value);
+    // items.splice(index, 1);
+    const items = [];
     this.setState({items});
   }
 
   completedItem = (index) => {
-    console.log(index);
     const items = this.state.items.slice();
     const item = items[index];
     item.completed = !item.completed;

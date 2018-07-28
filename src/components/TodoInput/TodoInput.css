@@ -1,0 +1,13 @@
+input {
+    margin: 20px 0;
+    font-size: 1.3em;
+    border: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+i {
+    padding-right: 3%;
+}

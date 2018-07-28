@@ -1,0 +1,11 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-image: linear-gradient(to left bottom, #ffffff, #dbd8fc, #b1b4fa, #7c92f7, #0573f5);
+    font-family: 'Lato', sans-serif;
+}

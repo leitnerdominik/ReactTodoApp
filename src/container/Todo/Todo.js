@@ -30,10 +30,28 @@ class Todo extends Component {
         }
     }
 
-    inputChangeHandler = (event) => {
+    inputChangeHandler(event) {
         this.setState({
             term: event.target.value,
         });
+    }
+
+    addItemHandler(item) {
+        const items = [...this.state.items];
+        const newItem = {
+            name: item,
+            id: 0,
+            isCompleted: false,
+        }
+
+        items.push(newItem);
+
+        const updatedItems = items.map((value, index) => {
+            const newItem = {...value, id: index + 1};
+            return newItem;
+        });
+
+        this.setState({items});
     }
 
     render() {

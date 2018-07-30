@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import TodoInput from '../../components/TodoInput/TodoInput';
+import TodoItems from '../../components/TodoItems/TodoItems';
 
 import './Todo.css';
 
@@ -36,6 +37,10 @@ class Todo extends Component {
         });
     }
 
+    cleanInputHandler() {
+        this.setState({term: ''});
+    }
+
     addItemHandler(item) {
         const items = [...this.state.items];
         const newItem = {
@@ -51,7 +56,7 @@ class Todo extends Component {
             return newItem;
         });
 
-        this.setState({items});
+        this.setState({items: updatedItems});
     }
 
     render() {
@@ -61,7 +66,10 @@ class Todo extends Component {
                 <TodoInput 
                     change={this.inputChangeHandler.bind(this)}
                     value={this.state.term}
+                    addItem={this.addItemHandler.bind(this)}
+                    cleanInput={this.cleanInputHandler.bind(this)}
                 />
+                <TodoItems items={this.state.items} />
             </div>
         );
 

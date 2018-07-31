@@ -59,6 +59,20 @@ class Todo extends Component {
         this.setState({items: updatedItems});
     }
 
+    toggleItem(id) {
+        const items = [...this.state.items];
+        const updatedItems = items.map((item) => {
+            if(id === item.id) {
+                console.log('[TOGGLEITEM]: id', id);
+                item.isCompleted = !item.isCompleted;
+            }
+            return item;
+        });
+
+        this.setState({updatedItems});
+
+    }
+
     render() {
 
         return(
@@ -69,7 +83,9 @@ class Todo extends Component {
                     addItem={this.addItemHandler.bind(this)}
                     cleanInput={this.cleanInputHandler.bind(this)}
                 />
-                <TodoItems items={this.state.items} />
+                <TodoItems 
+                    items={this.state.items}
+                    toggleItem={this.toggleItem.bind(this)} />
             </div>
         );
 

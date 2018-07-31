@@ -10,13 +10,12 @@ const todoInput = (props) => {
         if(event.key === 'Enter') {
             props.addItem(props.value);
             props.cleanInput();
-        }
-            
+        }   
     }
 
     return (
         <div>
-            <FontAwesomeIcon icon="fa-plus" />
+            <FontAwesomeIcon icon="plus" />
             <input 
                 type="text"
                 autoFocus 

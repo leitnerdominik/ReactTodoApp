@@ -13,15 +13,33 @@ svg {
     width: 20px;
 }
 
-svg:hover {
+/* svg:hover {
     color: green;
+} */
+
+.checkItem {
+    width: 20px;
+    height: 20px;
 }
 
-.ContainerItem {
+.checkItem:hover {
+    color: #2dbc45;
+}
+
+.editItem:hover {
+    color: #4286f4;
+}
+
+.deleteItem:hover {
+    color: #cc2e2e;
 }
 
 .ContainerItem:hover {
     background-color: lightgray;
+}
+
+.Completed {
+    text-decoration: line-through;
 }
 
 .checkItem {

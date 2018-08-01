@@ -9,9 +9,10 @@ const todoItems = (props) => {
             return <TodoItem 
                 name={item.name}
                 key={index}
-                id={index + 1}
+                index={index}
                 toggleItem={props.toggleItem}
-                isCompleted={item.isCompleted}/>
+                isCompleted={item.isCompleted}
+                deleteItem={props.deleteItem}/>
         })}
         </div>
     );

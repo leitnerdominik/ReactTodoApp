@@ -63,14 +63,19 @@ class Todo extends Component {
         const items = [...this.state.items];
         const updatedItems = items.map((item) => {
             if(id === item.id) {
-                console.log('[TOGGLEITEM]: id', id);
                 item.isCompleted = !item.isCompleted;
             }
             return item;
         });
 
-        this.setState({updatedItems});
+        this.setState({items: updatedItems});
 
+    }
+
+    deleteItem(index) {
+        const items = [...this.state.items];
+        items.splice(index, 1);
+        this.setState({items: items});
     }
 
     render() {
@@ -85,7 +90,8 @@ class Todo extends Component {
                 />
                 <TodoItems 
                     items={this.state.items}
-                    toggleItem={this.toggleItem.bind(this)} />
+                    toggleItem={this.toggleItem.bind(this)}
+                    deleteItem={this.deleteItem.bind(this)} />
             </div>
         );
 

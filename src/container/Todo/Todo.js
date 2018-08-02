@@ -16,16 +16,19 @@ class Todo extends Component {
                     name: 'stiagn kehrn',
                     id: 1,
                     isCompleted: false,
+                    isEditing: false,
                 },
                 {
                     name: 'bluamen giasn',
                     id: 2,
                     isCompleted: false,
+                    isEditing: false,
                 },
                 {
                     name: 'coding',
                     id: 3,
                     isCompleted: false,
+                    isEditing: false,
                 },
             ]
         }
@@ -59,22 +62,29 @@ class Todo extends Component {
         this.setState({items: updatedItems});
     }
 
-    toggleItem(id) {
+    toggleItem(index) {
         const items = [...this.state.items];
-        const updatedItems = items.map((item) => {
-            if(id === item.id) {
-                item.isCompleted = !item.isCompleted;
-            }
-            return item;
-        });
+        items[index].isCompleted = !items[index].isCompleted;
 
-        this.setState({items: updatedItems});
+        this.setState({items});
 
     }
 
     deleteItem(index) {
         const items = [...this.state.items];
         items.splice(index, 1);
+        this.setState({items: items});
+    }
+
+    toggleEdit(index) {
+        const items = [...this.state.items];
+        items[index].isEditing = !items[index].isEditing;
+        this.setState({items: items});
+    }
+
+    editItem(value, index) {
+        const items = [...this.state.items];
+        items[index].name = value;
         this.setState({items: items});
     }
 
@@ -91,7 +101,9 @@ class Todo extends Component {
                 <TodoItems 
                     items={this.state.items}
                     toggleItem={this.toggleItem.bind(this)}
-                    deleteItem={this.deleteItem.bind(this)} />
+                    deleteItem={this.deleteItem.bind(this)}
+                    editItem={this.editItem.bind(this)}
+                    toggleEdit={this.toggleEdit.bind(this)} />
             </div>
         );
 

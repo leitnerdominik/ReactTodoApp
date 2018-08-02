@@ -12,7 +12,10 @@ const todoItems = (props) => {
                 index={index}
                 toggleItem={props.toggleItem}
                 isCompleted={item.isCompleted}
-                deleteItem={props.deleteItem}/>
+                deleteItem={props.deleteItem}
+                editItem={props.editItem}
+                toggleEdit={props.toggleEdit}
+                isEditing={item.isEditing}/>
         })}
         </div>
     );

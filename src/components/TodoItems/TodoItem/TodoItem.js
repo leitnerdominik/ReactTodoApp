@@ -1,31 +1,61 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import './TodoItem.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const todoItem = (props) => {
-    const check = props.isCompleted ? "check-circle" : ["far", "circle"];
+class TodoItem extends Component {
 
-    const edit = <textarea defaultValue={props.name} />
-    const title =  <h2 className={props.isCompleted ? "Completed" : null}>{props.name}</h2>
+    constructor(props) {
+        super(props);
+        this.changeItem = this.changeItem.bind(this);
+        this.keyDownHandler = this.keyDownHandler.bind(this);
+    }
+    changeItem(event) {
+        const value = event.target.value;
+        this.props.toggleEdit(this.props.index);
+        this.props.editItem(value, this.props.index);
+        console.log('changing item....')
+    }
+    
+    keyDownHandler(event) {
+        if(event.key === 'Enter') {
+            this.changeItem(event);
+        }   
+    }
 
-    const item = props.isEditing ? edit : title;
+    
 
-    return (
-        <div className="ContainerItem">
-            <div className="checkItem" onClick={() => props.toggleItem(props.index)}>
-                <FontAwesomeIcon icon={check} />
+    render() {
+
+        const check = this.props.isCompleted ? "check-circle" : ["far", "circle"];
+
+        const edit = <textarea 
+            defaultValue={this.props.name}
+            onKeyDown={this.keyDownHandler}
+            autoFocus
+            onBlur={this.changeItem} />
+        const title =  <h2 className={this.props.isCompleted ? "Completed" : null}>{this.props.name}</h2>
+
+        const item = this.props.isEditing ? edit : title;
+
+        const showEdit = !this.props.isEditing ? <div className="editItem" onClick={() => this.props.toggleEdit(this.props.index)}>
+            <FontAwesomeIcon icon="pencil-alt"/>
+        </div> : null;
+
+        return (
+            <div className="ContainerItem">
+                <div className="checkItem" onClick={() => this.props.toggleItem(this.props.index)}>
+                    <FontAwesomeIcon icon={check} />
+                </div>
+                {item}
+                {showEdit}
+                <div className="deleteItem" onClick={() => this.props.deleteItem(this.props.index)}>
+                    <FontAwesomeIcon icon="trash-alt"/>
+                </div>
             </div>
-            {item}
-            <div className="editItem" onClick={() => props.toggleEdit(props.index)}>
-                <FontAwesomeIcon icon="pencil-alt"/>
-            </div>
-            <div className="deleteItem" onClick={() => props.deleteItem(props.index)}>
-                <FontAwesomeIcon icon="trash-alt"/>
-            </div>
-        </div>
-    );
+        );
+    }
 }
 
-export default todoItem;
+export default TodoItem;

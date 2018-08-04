@@ -31,8 +31,26 @@ class Todo extends Component {
                     isCompleted: false,
                     isEditing: false,
                 },
-            ]
+            ],
+
+            showItems: [],
+            showOption: 'ALL',
         }
+    }
+
+    componentDidMount() {
+        this.setState({showItems: [...this.state.items]});
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log(nextState);
+        if(this.state.showOption === nextState.showOption)
+            return false;
+        return true;
+    }
+    
+    componentDidUpdate() {
+        this.changeShowItems(this.state.showOption);
     }
 
     inputChangeHandler(event) {
@@ -97,12 +115,28 @@ class Todo extends Component {
     clearCompleted() {
         const items = [...this.state.items];
         const updatedItems = items.filter(item => !item.isCompleted)
-        this.setState({items: updatedItems});
+        this.setState({
+            items: updatedItems,
+            showItems: updatedItems,
+            });
     }
 
-    showItems() {
+    changeShowItems(option) {
+        const items = [...this.state.items];
+        let updatedItems = items;
+        if(option === 'ACTIVE') {
+            updatedItems = items.filter(item => !item.isCompleted);
+        } else if(option === 'COMPLETED') {
+            updatedItems = items.filter(item => item.isCompleted);
+        }
         
+        this.setState({showItems: updatedItems});
     }
+
+    changeShowOption(option) {
+        this.setState({showOption: option});
+    }
+    
 
     render() {
 
@@ -117,14 +151,15 @@ class Todo extends Component {
                     cleanInput={this.cleanInputHandler.bind(this)}
                 />
                 <TodoItems 
-                    items={this.state.items}
+                    items={this.state.showItems}
                     toggleItem={this.toggleItem.bind(this)}
                     deleteItem={this.deleteItem.bind(this)}
                     editItem={this.editItem.bind(this)}
                     toggleEdit={this.toggleEdit.bind(this)} />
                 <TodoFooter
                     itemsLeft={itemsLeft}
-                    clearCompleted={this.clearCompleted.bind(this)} />
+                    clearCompleted={this.clearCompleted.bind(this)}
+                    show={this.changeShowOption.bind(this)} />
             </div>
         );
 

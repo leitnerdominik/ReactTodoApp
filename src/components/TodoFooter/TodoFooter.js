@@ -4,9 +4,9 @@ const todoFooter = (props) => {
     return (
         <div>
             {props.itemsLeft} {props.itemsLeft === 1 ? 'item' : 'items'} left
-            <button>All</button>
-            <button>Active</button>
-            <button>Completed</button>
+            <button onClick={() => props.show()}>All</button>
+            <button onClick={() => props.show('ACTIVE')}>Active</button>
+            <button onClick={() => props.show('COMPLETED')}>Completed</button>
             <button onClick={props.clearCompleted}>Clear completed</button>
         </div>
     );

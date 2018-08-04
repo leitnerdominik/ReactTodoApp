@@ -15,7 +15,6 @@ class TodoItem extends Component {
         const value = event.target.value;
         this.props.toggleEdit(this.props.index);
         this.props.editItem(value, this.props.index);
-        console.log('changing item....')
     }
     
     keyDownHandler(event) {
@@ -39,7 +38,7 @@ class TodoItem extends Component {
 
         const item = this.props.isEditing ? edit : title;
 
-        const showEdit = !this.props.isEditing ? <div className="editItem" onClick={() => this.props.toggleEdit(this.props.index)}>
+        const showEdit = !this.props.isEditing ? <div className="editItem controls" onClick={() => this.props.toggleEdit(this.props.index)}>
             <FontAwesomeIcon icon="pencil-alt"/>
         </div> : null;
 
@@ -50,7 +49,7 @@ class TodoItem extends Component {
                 </div>
                 {item}
                 {showEdit}
-                <div className="deleteItem" onClick={() => this.props.deleteItem(this.props.index)}>
+                <div className="deleteItem controls" onClick={() => this.props.deleteItem(this.props.index)}>
                     <FontAwesomeIcon icon="trash-alt"/>
                 </div>
             </div>

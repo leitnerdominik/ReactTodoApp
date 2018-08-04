@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import TodoInput from '../../components/TodoInput/TodoInput';
 import TodoItems from '../../components/TodoItems/TodoItems';
+import TodoFooter from '../../components/TodoFooter/TodoFooter';
 
 import './Todo.css';
 
@@ -13,13 +14,13 @@ class Todo extends Component {
             term: '',
             items: [
                 {
-                    name: 'stiagn kehrn',
+                    name: 'cleaning stairs',
                     id: 1,
                     isCompleted: false,
                     isEditing: false,
                 },
                 {
-                    name: 'bluamen giasn',
+                    name: 'sluice',
                     id: 2,
                     isCompleted: false,
                     isEditing: false,
@@ -88,7 +89,24 @@ class Todo extends Component {
         this.setState({items: items});
     }
 
+    itemsLeftHandler() {
+        const itemsLeft = this.state.items.filter(item => !item.isCompleted);
+        return itemsLeft.length;
+    }
+
+    clearCompleted() {
+        const items = [...this.state.items];
+        const updatedItems = items.filter(item => !item.isCompleted)
+        this.setState({items: updatedItems});
+    }
+
+    showItems() {
+        
+    }
+
     render() {
+
+        const itemsLeft = this.itemsLeftHandler();
 
         return(
             <div className="Container">
@@ -104,6 +122,9 @@ class Todo extends Component {
                     deleteItem={this.deleteItem.bind(this)}
                     editItem={this.editItem.bind(this)}
                     toggleEdit={this.toggleEdit.bind(this)} />
+                <TodoFooter
+                    itemsLeft={itemsLeft}
+                    clearCompleted={this.clearCompleted.bind(this)} />
             </div>
         );
 

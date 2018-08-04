@@ -4,7 +4,9 @@ import TodoItem from './TodoItem/TodoItem';
 
 const todoItems = (props) => {
     return (
-        <div>
+        <div style={{
+            marginBottom: '20px',
+        }}>
         {props.items.map((item, index) => {
             return <TodoItem 
                 name={item.name}

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import _ from 'lodash';
+
 import TodoInput from '../../components/TodoInput/TodoInput';
 import TodoItems from '../../components/TodoItems/TodoItems';
 import TodoFooter from '../../components/TodoFooter/TodoFooter';
@@ -32,26 +34,10 @@ class Todo extends Component {
                     isEditing: false,
                 },
             ],
-
-            showItems: [],
             showOption: 'ALL',
         }
     }
 
-    componentDidMount() {
-        this.setState({showItems: [...this.state.items]});
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log(nextState);
-        if(this.state.showOption === nextState.showOption)
-            return false;
-        return true;
-    }
-    
-    componentDidUpdate() {
-        this.changeShowItems(this.state.showOption);
-    }
 
     inputChangeHandler(event) {
         this.setState({
@@ -81,30 +67,54 @@ class Todo extends Component {
         this.setState({items: updatedItems});
     }
 
-    toggleItem(index) {
+    toggleItem(id) {
         const items = [...this.state.items];
-        items[index].isCompleted = !items[index].isCompleted;
+        const updatedItems = items.map(item => {
+            return (
+                {...item, isCompleted: item.id === id ? !item.isCompleted : item.isCompleted}
+            );
+        })
 
-        this.setState({items});
+        this.setState({items: updatedItems});
 
     }
 
-    deleteItem(index) {
+    deleteItem(id) {
         const items = [...this.state.items];
-        items.splice(index, 1);
-        this.setState({items: items});
+        const updatedItems = items.filter(item => item.id !== id);
+        this.setState({items: updatedItems});
     }
 
-    toggleEdit(index) {
+    toggleEdit(id) {
         const items = [...this.state.items];
-        items[index].isEditing = !items[index].isEditing;
-        this.setState({items: items});
+        console.log(id);
+        const updatedItems = items.map((item) => {
+            let edit = item.isEditing;
+            if(item.id === id)
+                edit = !item.isEditing;
+            console.log('[TOGGLE EDIT]', item.isEditing);
+            return {...item, isEditing: edit};
+            // {...item, isEditing: item.id === id ? !item.isEditing : item.isEditing}
+        });
+
+        // console.log('[UPDATE ITEMS]:', updatedItems[1].isEditing);
+
+        console.table(updatedItems);
+
+        this.setState({items: updatedItems});
+
     }
 
-    editItem(value, index) {
+    editItem(value, id) {
         const items = [...this.state.items];
-        items[index].name = value;
-        this.setState({items: items});
+        const updatedItems = items.map(item => {
+            return (
+                {...item, name: item.id === id ? value : item.name}
+            );
+        })
+
+        this.setState({items: updatedItems});
+
     }
 
     itemsLeftHandler() {
@@ -115,10 +125,7 @@ class Todo extends Component {
     clearCompleted() {
         const items = [...this.state.items];
         const updatedItems = items.filter(item => !item.isCompleted)
-        this.setState({
-            items: updatedItems,
-            showItems: updatedItems,
-            });
+        this.setState({items: updatedItems});
     }
 
     changeShowItems(option) {
@@ -129,8 +136,8 @@ class Todo extends Component {
         } else if(option === 'COMPLETED') {
             updatedItems = items.filter(item => item.isCompleted);
         }
-        
-        this.setState({showItems: updatedItems});
+
+        return updatedItems;
     }
 
     changeShowOption(option) {
@@ -141,6 +148,7 @@ class Todo extends Component {
     render() {
 
         const itemsLeft = this.itemsLeftHandler();
+        const items = this.changeShowItems(this.state.showOption)
 
         return(
             <div className="Container">
@@ -151,7 +159,7 @@ class Todo extends Component {
                     cleanInput={this.cleanInputHandler.bind(this)}
                 />
                 <TodoItems 
-                    items={this.state.showItems}
+                    items={items}
                     toggleItem={this.toggleItem.bind(this)}
                     deleteItem={this.deleteItem.bind(this)}
                     editItem={this.editItem.bind(this)}

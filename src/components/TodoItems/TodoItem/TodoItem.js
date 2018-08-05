@@ -12,9 +12,10 @@ class TodoItem extends Component {
         this.keyDownHandler = this.keyDownHandler.bind(this);
     }
     changeItem(event) {
+        
         const value = event.target.value;
-        this.props.toggleEdit(this.props.index);
-        this.props.editItem(value, this.props.index);
+        this.props.toggleEdit(this.props.id);
+        this.props.editItem(value, this.props.id);
     }
     
     keyDownHandler(event) {
@@ -38,18 +39,18 @@ class TodoItem extends Component {
 
         const item = this.props.isEditing ? edit : title;
 
-        const showEdit = !this.props.isEditing ? <div className="editItem controls" onClick={() => this.props.toggleEdit(this.props.index)}>
+        const showEdit = !this.props.isEditing ? <div className="editItem controls" onClick={() => this.props.toggleEdit(this.props.id)}>
             <FontAwesomeIcon icon="pencil-alt"/>
         </div> : null;
 
         return (
             <div className="ContainerItem">
-                <div className="checkItem" onClick={() => this.props.toggleItem(this.props.index)}>
+                <div className="checkItem" onClick={() => this.props.toggleItem(this.props.id)}>
                     <FontAwesomeIcon icon={check} />
                 </div>
                 {item}
                 {showEdit}
-                <div className="deleteItem controls" onClick={() => this.props.deleteItem(this.props.index)}>
+                <div className="deleteItem controls" onClick={() => this.props.deleteItem(this.props.id)}>
                     <FontAwesomeIcon icon="trash-alt"/>
                 </div>
             </div>

@@ -11,7 +11,7 @@ const todoItems = (props) => {
             return <TodoItem 
                 name={item.name}
                 key={index}
-                index={index}
+                id={item.id}
                 toggleItem={props.toggleItem}
                 isCompleted={item.isCompleted}
                 deleteItem={props.deleteItem}

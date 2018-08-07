@@ -1,8 +1,10 @@
 import React from 'react';
 
+import './TodoFooter.css'
+
 const todoFooter = (props) => {
     return (
-        <div>
+        <div className={"Footer"}>
             {props.itemsLeft} {props.itemsLeft === 1 ? 'item' : 'items'} left
             <button onClick={() => props.show()}>All</button>
             <button onClick={() => props.show('ACTIVE')}>Active</button>

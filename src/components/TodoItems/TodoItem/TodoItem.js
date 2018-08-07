@@ -12,9 +12,7 @@ class TodoItem extends Component {
         this.keyDownHandler = this.keyDownHandler.bind(this);
     }
     changeItem(event) {
-        
         const value = event.target.value;
-        this.props.toggleEdit(this.props.id);
         this.props.editItem(value, this.props.id);
     }
     

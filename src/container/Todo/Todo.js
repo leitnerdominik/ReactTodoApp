@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import _ from 'lodash';
-
 import TodoInput from '../../components/TodoInput/TodoInput';
 import TodoItems from '../../components/TodoItems/TodoItems';
 import TodoFooter from '../../components/TodoFooter/TodoFooter';
@@ -87,19 +85,9 @@ class Todo extends Component {
 
     toggleEdit(id) {
         const items = [...this.state.items];
-        console.log(id);
         const updatedItems = items.map((item) => {
-            let edit = item.isEditing;
-            if(item.id === id)
-                edit = !item.isEditing;
-            console.log('[TOGGLE EDIT]', item.isEditing);
-            return {...item, isEditing: edit};
-            // {...item, isEditing: item.id === id ? !item.isEditing : item.isEditing}
+            return {...item, isEditing: item.id === id ? !item.isEditing : item.isEditing}
         });
-
-        // console.log('[UPDATE ITEMS]:', updatedItems[1].isEditing);
-
-        console.table(updatedItems);
 
         this.setState({items: updatedItems});
 
@@ -108,9 +96,12 @@ class Todo extends Component {
     editItem(value, id) {
         const items = [...this.state.items];
         const updatedItems = items.map(item => {
-            return (
-                {...item, name: item.id === id ? value : item.name}
-            );
+            if(item.id === id) {
+                item.name = value;
+                item.isEditing = !item.isEditing;
+                
+            }
+            return item;
         })
 
         this.setState({items: updatedItems});
@@ -162,7 +153,7 @@ class Todo extends Component {
                     items={items}
                     toggleItem={this.toggleItem.bind(this)}
                     deleteItem={this.deleteItem.bind(this)}
-                    editItem={this.editItem.bind(this)}
+                    editItem={this.editItem.bind(this)} 
                     toggleEdit={this.toggleEdit.bind(this)} />
                 <TodoFooter
                     itemsLeft={itemsLeft}

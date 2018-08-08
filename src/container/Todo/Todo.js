@@ -158,7 +158,8 @@ class Todo extends Component {
                 <TodoFooter
                     itemsLeft={itemsLeft}
                     clearCompleted={this.clearCompleted.bind(this)}
-                    show={this.changeShowOption.bind(this)} />
+                    show={this.changeShowOption.bind(this)}
+                    showOption={this.state.showOption} />
             </div>
         );
 

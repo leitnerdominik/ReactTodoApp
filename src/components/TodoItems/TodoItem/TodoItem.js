@@ -33,7 +33,7 @@ class TodoItem extends Component {
             onKeyDown={this.keyDownHandler}
             autoFocus
             onBlur={this.changeItem} />
-        const title =  <h2 className={this.props.isCompleted ? "Completed" : null}>{this.props.name}</h2>
+        const title =  <h2 className={this.props.isCompleted ? "CompletedItem" : null}>{this.props.name}</h2>
 
         const item = this.props.isEditing ? edit : title;
 

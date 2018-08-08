@@ -7,3 +7,9 @@
     box-shadow: 0 2px 3px #ccc;
     border: 1px solid #eee;
 }
+
+@media (max-width: 650px) {
+    .Container {
+        width: 80%;
+    }
+}

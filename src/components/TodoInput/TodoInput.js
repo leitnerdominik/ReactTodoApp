@@ -15,7 +15,7 @@ const todoInput = (props) => {
 
     return (
         <div>
-            <FontAwesomeIcon icon="plus" />
+            <FontAwesomeIcon className="AddPlus" icon="plus" />
             <input 
                 type="text"
                 autoFocus 

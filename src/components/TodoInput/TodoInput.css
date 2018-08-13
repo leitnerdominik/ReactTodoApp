@@ -2,12 +2,13 @@ input {
     margin: 20px 0;
     font-size: 1.3em;
     border: none;
+    width: 80%;
 }
 
 input:focus {
     outline: none;
 }
 
-i {
+.AddPlus {
     padding-right: 3%;
 }

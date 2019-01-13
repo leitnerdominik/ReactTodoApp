@@ -6,6 +6,7 @@ html, body {
 }
 
 body {
-    background-image: linear-gradient(to left bottom, #ffffff, #dbd8fc, #b1b4fa, #7c92f7, #0573f5);
-    font-family: 'Lato', sans-serif;
+    /* background-image: linear-gradient(to left bottom, #ffffff, #dbd8fc, #b1b4fa, #7c92f7, #0573f5); */
+    background: url("images/bg.jpg");
+    font-family: 'Montserrat', sans-serif;
 }

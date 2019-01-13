@@ -1,15 +1,30 @@
-.Container {
-    width: 40%;
-    margin: 20px auto;
-    background-color: white;
-    border-radius: 6px;
-    padding: 2.5% 5%;
-    box-shadow: 0 2px 3px #ccc;
-    border: 1px solid #eee;
+.container {
+  width: 480px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #353b48;
+  padding: 30px 60px;
+  box-shadow: 0 2px 3px black;
+  border: 1px solid #292d36;
+  border-radius: 6px;
+  color: #f1f1f1;
+  box-sizing: border-box;
+  transition: .7s;
 }
 
-@media (max-width: 650px) {
-    .Container {
-        width: 80%;
+.title {
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  color: #3369ff;
+  text-shadow: 2px 2px 0px #292d36, 5px 4px 0px rgba(0,0,0,0.15);
+}
+
+@media(max-width: 499px) {
+    .container {
+        width: 100%;
     }
 }

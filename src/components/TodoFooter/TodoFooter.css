@@ -1,63 +1,65 @@
-.Show {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+.show {
+    display: flex;
     justify-content: center;
+    justify-content: space-between;
 }
 
-button {
+.btn {
     position: relative;
     font-family: inherit;
     text-transform: uppercase;
-    padding: 5px;
-    margin: 0 5px;
-    font-weight: 700;
+    padding: 10px 5px;
     color: white;  
     border: none;
     text-align: center;
     box-sizing: border-box;
     border-radius: 0.23em;
     box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
-    background-color: #668fff;
 }
 
+.btn:focus {
+    outline: none;
+}
 
-.Show button:hover {
+.todo {
+    width: 100px;
+    background-color: #273c75;
+}
+
+.show .btn:hover {
     cursor: pointer;
-    background-color: #3369ff;
+    background-color: #274cb3;
+    top: 0.1em;
 }
 
-.Show button:active, .All, .Completed, .Active {
+.show .btn:active, .all-btn, .completed-btn, .active-btn {
     top: 0.1em;
     background-color: #3369ff;
 }
 
-.ClearCompleted:focus, Show button:focus {
-    outline: none;
+.clearCompleted {
+    background-color: #6b1b1b;
 }
 
-.ClearCompleted:active {
+.clearCompleted:active {
     top: 1.6em;
     outline: none;
 }
 
-.ClearCompleted:hover {
-    background-color: #cc0000;
+.clearCompleted:hover {
+    background-color: #b41313;
     cursor: pointer;
+    transition: .3s;
 }
 
-span {
-    font-weight: 700;
-    font-size: 1.1em;
+.items-left {
+    font-size: 1.3em;
 }
 
-.Info {
+.info {
     padding: 20px 0;
-    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.ClearCompleted {
-    background-color: #ff3c3c;
-    position: absolute;
-    right: 0px;
-    
-}

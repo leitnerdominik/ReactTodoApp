@@ -2,8 +2,6 @@ import React from 'react';
 
 import './TodoInput.css';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 const todoInput = (props) => {
 
     const keyDownHandler = (event) => {
@@ -15,11 +13,11 @@ const todoInput = (props) => {
 
     return (
         <div>
-            <FontAwesomeIcon className="AddPlus" icon="plus" />
             <input 
+                className="add-task"
                 type="text"
                 autoFocus 
-                placeholder="add item" 
+                placeholder="add item.." 
                 onChange={props.change}
                 value={props.value}
                 onKeyDown={keyDownHandler.bind(this)} />

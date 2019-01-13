@@ -1,14 +1,24 @@
-input {
+.add-task {
     margin: 20px 0;
     font-size: 1.3em;
-    border: none;
-    width: 80%;
+    width: 100%;
+    background: #353b48;
+    border-radius: 6px;
+    border: 3px double #292d36;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    transition: 0.7s;
 }
 
-input:focus {
+.add-task::placeholder {
+    color: #bdbcbcf1;
+}
+
+.add-task:focus {
+    background: #66738d;
     outline: none;
 }
 
-.AddPlus {
-    padding-right: 3%;
+.add-task:focus, .add-task:focus::placeholder {
+    color: #f1f1f1f1;
 }

@@ -26,13 +26,13 @@
     background-color: #273c75;
 }
 
-.show .btn:hover {
+.show .todo:hover {
     cursor: pointer;
     background-color: #274cb3;
     top: 0.1em;
 }
 
-.show .btn:active, .all-btn, .completed-btn, .active-btn {
+.show .todo:active, .all-btn, .completed-btn, .active-btn {
     top: 0.1em;
     background-color: #3369ff;
 }
@@ -42,7 +42,6 @@
 }
 
 .clearCompleted:active {
-    top: 1.6em;
     outline: none;
 }
 

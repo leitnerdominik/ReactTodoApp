@@ -2,7 +2,8 @@
 
 Just a todo app :P
 
-![demo img](https://user-images.githubusercontent.com/15259978/65545659-17052b00-df16-11e9-86ae-0be444ff9dac.png)
+![demo img](https://user-images.githubusercontent.com/15259978/65545846-824efd00-df16-11e9-967b-395046c74e71.png)
+
 
 
 ## Requirements

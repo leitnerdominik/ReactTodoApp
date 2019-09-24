@@ -2,8 +2,10 @@
 
 Just a todo app :P
 
+<details>
+<summary>Image</summary>
 ![image](https://user-images.githubusercontent.com/15259978/65545065-ebce0c00-df14-11e9-82e3-138a2bb060d3.png)
-
+</details>
 
 ## Requirements
 
